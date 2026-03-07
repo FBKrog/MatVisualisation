@@ -1,0 +1,3 @@
+Video: link being added here to more easily find videos asap
+
+The fourth workshop, planar and spacial curves, I decided to visualise using a website rather than Unity. It is still in this repository, but is located in the "docs" folder instead.
