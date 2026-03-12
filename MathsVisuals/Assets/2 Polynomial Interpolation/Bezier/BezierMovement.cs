@@ -70,20 +70,20 @@ public class BezierMovement : MonoBehaviour
     /// <summary>
     /// Calculates a point on a bezier-curve given 4 points and a t-value.
     /// </summary>
-    /// <param name="numA">You know this as P_0. The start-point of the curve.</param>
-    /// <param name="numB">Aka P_1. The direction the curve moves from the start-point.</param>
-    /// <param name="numC">Aka P_2. The direction the curve moves from when reaching the end-point.</param>
-    /// <param name="numD">Aka P_3. The end-point of the curve.</param>
+    /// <param name="p_0">The start-point of the curve.</param>
+    /// <param name="p_1">The direction the curve moves from the start-point.</param>
+    /// <param name="p_2">The direction the curve moves from when reaching the end-point.</param>
+    /// <param name="p_3">The end-point of the curve.</param>
     /// <param name="t">How far along the curve you are.</param>
     /// <returns></returns>
-    public static float BezierCalculation(float numA, float numB, float numC, float numD, float t)
+    public static float BezierCalculation(float p_0, float p_1, float p_2, float p_3, float t)
     {
         // t is a value between 0 and 1, so let's clamp that
         Mathf.Clamp01(t);
 
         // Equation for a point on a bezier-curve is: B(t) = (1-t)^3*P_0 + 3(1-t)^2*t*P_1 + 3(1-t)*t^2*P_2 + t^3*P_3, 0<=t<=1
         // The following line is that translated into C#, using numA->numD as P_0->P_1
-        float endValue = Mathf.Pow(1-t,3)*numA + 3*Mathf.Pow(1-t,2)*t*numB + 3*(1-t)*Mathf.Pow(t,2)*numC + Mathf.Pow(t,3)*numD;
+        float endValue = Mathf.Pow(1-t,3)*p_0 + 3*Mathf.Pow(1-t,2)*t*p_1 + 3*(1-t)*Mathf.Pow(t,2)*p_2 + Mathf.Pow(t,3)*p_3;
 
         return endValue;
     }

@@ -9,8 +9,6 @@ public class LagrangeLineDrawer : MonoBehaviour
     [SerializeField, Tooltip("A transform with a bunch of children that will be used as interest points")] private Transform interestPointParent;
     [SerializeField, Tooltip("A Line Renderer that will draw a path between each interest point")] private LineRenderer pathRenderer;
 
-    private float[] lagrangeCoefficients = null;
-
     /// <summary>
     /// Makes the LineRenderer show a path that connects all the interest points
     /// </summary>
@@ -22,12 +20,10 @@ public class LagrangeLineDrawer : MonoBehaviour
         if (interestPointCount < 2)
             return;
 
-        // Get a number of points equal to pathSmoothness * the amount of paths between interestPoints + 1 point per interest point
-        pathRenderer.positionCount = (interestPointCount - 1) * pathSmoothness + interestPointCount;
-
-        // Create a matrix with a height of 2 for the X and Z coordinate, and a length of the amount of interestPoints
-        float[][] interestPointXZPositions = new float[][] { new float[interestPointCount],
-                                                             new float[interestPointCount] };
+        // Create a matrix with a height of 3 for the coordinates, and a length of the amount of interestPoints
+        float[][] interestPointPositions = new float[][] { new float[interestPointCount],
+                                                           new float[interestPointCount],
+                                                           new float[interestPointCount] };
 
         // Go through all the interestpoints and get their coordinates
         for (int i = 0; i < interestPointCount; i++)
@@ -35,9 +31,13 @@ public class LagrangeLineDrawer : MonoBehaviour
             // Get the coordinates of this interest point
             Vector3 coordinates = interestPointParent.GetChild(i).position;
             // Remember both the X and Z coordinate
-            interestPointXZPositions[0][i] = coordinates.x;
-            interestPointXZPositions[1][i] = coordinates.z;
+            interestPointPositions[0][i] = coordinates.x;
+            interestPointPositions[1][i] = coordinates.y;
+            interestPointPositions[2][i] = coordinates.z;
         }
+
+        // Get a number of points equal to pathSmoothness * the amount of paths between interestPoints + 1 point per interest point
+        pathRenderer.positionCount = (interestPointCount - 1) * pathSmoothness + interestPointCount;
 
         Vector3[] pointPositions = new Vector3[pathRenderer.positionCount];
 
@@ -46,9 +46,9 @@ public class LagrangeLineDrawer : MonoBehaviour
         {
             float tValue = (float)i / (float)(pathSmoothness + 1);
 
-            pointPositions[i] = new Vector3(LagrangeCalculation(interestPointXZPositions[0], tValue),
-                                            0f,
-                                            LagrangeCalculation(interestPointXZPositions[1], tValue));
+            pointPositions[i] = new Vector3(LagrangeCalculation(interestPointPositions[0], tValue),
+                                            LagrangeCalculation(interestPointPositions[1], tValue),
+                                            LagrangeCalculation(interestPointPositions[2], tValue));
         }
 
         pathRenderer.SetPositions(pointPositions);
@@ -80,13 +80,13 @@ public class LagrangeLineDrawer : MonoBehaviour
             }
         }
 
-        float y = 0;
+        float f = 0;
         for (int i = 0; i < n; i++)
         {
-            y += lagrange[i] * points[i];
+            f += lagrange[i] * points[i];
         }
 
-        return y;
+        return f;
     }
 
     /// <summary>

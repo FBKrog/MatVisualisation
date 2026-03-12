@@ -80,12 +80,20 @@ public class LiquidDisplacer : MonoBehaviour
         return volume;
     }
 
+    /// <summary>
+    /// Sets the amount of ml liquid in the glass
+    /// </summary>
+    /// <param name="mlInGlass"></param>
     public void PourLiquid(float mlInGlass)
     {
         liquidVolume = mlInGlass;
         SetSize(extraVolumeInLiquid);
     }
 
+    /// <summary>
+    /// Sets the size of the liquid in the glass based on the volume of displaced liquid
+    /// </summary>
+    /// <param name="extraVolume"></param>
     private void SetSize(float extraVolume = 0f)
     {
         // Get how much space the liquid should take up
@@ -97,16 +105,21 @@ public class LiquidDisplacer : MonoBehaviour
         // Using tan(alpha) = b/a we can define the radius by height and angle. b is radius, a is height
         // r/h = tan(alpha)
         // r = h * tan(alpha)
+
+        // We can input this definition of r in the formula for the volume of a cone, and then isolate the height
         // V = (1/3) * pi * (h * tan(alpha))^2 * h
         // V = (1/3) * pi * tan(alpha)^2 * h^3
         // V / ( (1/3) * pi * tan(alpha)^2 ) = h^3
         // ( V / ( (1/3) * pi * tan(alpha)^2 ) )^(1/3) = h
+
+        // Rewrite to be Unity math compatible
         // Mathf.Pow( V / ( (1/3) * pi * tan(alpha)^2 ), 1/3 ) = h
         // Mathf.Pow( V / ( (1/3) * pi * Mathf.Pow(tan(alpha), 2) ), 1/3 ) = h 
 
         // Get the height
         float targetLiquidHeight = Mathf.Pow(liquidInGlass / ((1f / 3f) * Mathf.PI * Mathf.Pow(Mathf.Tan(glassBottomAngle), 2f)), 1f/3f);
 
+        // Scale the liquid based on the target height, so that it takes up the correct volume
         liquidBottom.localScale = Vector3.one * ( targetLiquidHeight < maxLiquidHeight ? targetLiquidHeight / maxLiquidHeight : 1f );
     }
 }
