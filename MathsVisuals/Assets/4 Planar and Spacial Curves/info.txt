@@ -1,3 +1,5 @@
-Video: link being added here to more easily find videos asap
+Video: https://youtu.be/iBR3xc2bh5w
+
+Website: https://fbkrog.github.io/MatVisualisation/
 
 The fourth workshop, planar and spacial curves, I decided to visualise using a website rather than Unity. It is still in this repository, but is located in the "docs" folder instead.

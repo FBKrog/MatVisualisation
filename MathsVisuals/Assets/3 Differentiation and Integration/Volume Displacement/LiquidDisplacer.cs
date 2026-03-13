@@ -49,14 +49,15 @@ public class LiquidDisplacer : MonoBehaviour
     // FixedUpdate is called once per physics iteration
     private void FixedUpdate()
     {
-        // Since OnTriggerStay has been called for every collider in this this frame, extraVolumeInLiquid should have the combined m^3 volume of those colliders
+        // Since OnTriggerStay has been called for every collider in this this frame,
+        // extraVolumeInLiquid should have the combined m^3 volume of those colliders
         // We'll write it out in mL
         oliveVolumeText.FillText(extraVolumeInLiquid * 1000f * 1000f);
 
         // And make the liquid adjust its size
         SetSize(extraVolumeInLiquid);
 
-        // Reset extra volume to recount it next frame
+        // Reset extra volume to recount it next physics iteration
         extraVolumeInLiquid = 0f;
     }
 

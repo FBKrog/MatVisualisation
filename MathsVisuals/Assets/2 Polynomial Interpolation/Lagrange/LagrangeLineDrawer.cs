@@ -30,7 +30,7 @@ public class LagrangeLineDrawer : MonoBehaviour
         {
             // Get the coordinates of this interest point
             Vector3 coordinates = interestPointParent.GetChild(i).position;
-            // Remember both the X and Z coordinate
+            // Remember both the X, Y and Z coordinate
             interestPointPositions[0][i] = coordinates.x;
             interestPointPositions[1][i] = coordinates.y;
             interestPointPositions[2][i] = coordinates.z;

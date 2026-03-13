@@ -2,7 +2,9 @@
 
 Visualisation of different Mathematics for Multimedia Applications workshop topics in Medialogy contexts.
 
-This Unity project is to serve as inspiration for how the math learned in the MMA course may be applicable for different Medialogy contexts. Each mathematical concept learned is a tool, and there are many situations where they can be used that this project does not cover, but it hopefully gives an idea of some ways to apply it
+This Unity project is to serve as inspiration for how the math learned in the MMA course may be applicable for different Medialogy contexts. Each mathematical concept learned is a tool, and there are many situations where they can be used that this project does not cover, but it hopefully gives an idea of some ways to apply it.
+
+The video series that explores each of these medialogy applications for the course contents can be watched [here](https://www.youtube.com/playlist?list=PL7d9vDd5gyQdc8G5XJte9ua0MShCcd)
 
 ## 1. Trigonometric functions
 
@@ -20,7 +22,7 @@ If paired with a liquid shader, it could simulate contained liquids and displace
 
 ## 4. Planar and Spacial Curves
 
-Unit Tangent Normal Vector computed to animate SVG. Not in Unity, but instead a [https://felix.krog.dk/MatVisualisation/](website).
+Unit Tangent Normal Vector computed to animate SVG. Not in Unity, but instead a [website](https://fbkrog.github.io/MatVisualisation/), the files for which are in the docs folder of this repository.
 
 # Asset Credits
 
