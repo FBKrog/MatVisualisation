@@ -4,7 +4,7 @@ Visualisation of different Mathematics for Multimedia Applications workshop topi
 
 This Unity project is to serve as inspiration for how the math learned in the MMA course may be applicable for different Medialogy contexts. Each mathematical concept learned is a tool, and there are many situations where they can be used that this project does not cover, but it hopefully gives an idea of some ways to apply it.
 
-The video series that explores each of these medialogy applications for the course contents can be watched [here](https://www.youtube.com/playlist?list=PL7d9vDd5gyQdc8G5XJte9ua0MShCcd)
+The video series that explores each of these medialogy applications for the course contents can be watched [here](https://www.youtube.com/playlist?list=PL7d9vDd5gyQdc8G5XJte9ua0MShCcd_zL)
 
 ## 1. Trigonometric functions
 
